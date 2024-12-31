@@ -1,5 +1,5 @@
 """Модуль реализации пар."""
-from typing import Callable, Sequence
+from typing import Callable, Sequence, Any
 from _types import Numer, Denom, DenomEnd, ListPair, Pair, TypeSelectorEnum, Index
 
 
@@ -112,3 +112,10 @@ def is_odd(x: int) -> bool:
 def is_even(x: int):
     """Проверяет, является ли число четным."""
     return x % 2  == 0
+
+
+def to_list(pair_list: ListPair) -> list[Any]:
+    """Конвертерует из списка пар в list"""
+    if is_none(pair_list):
+        return []
+    return [car(pair_list)] + to_list(cdr(pair_list))
